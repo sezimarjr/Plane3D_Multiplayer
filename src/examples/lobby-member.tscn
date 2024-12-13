@@ -1,0 +1,58 @@
+[gd_scene load_steps=5 format=3 uid="uid://bsk01dhjbup0j"]
+
+[ext_resource type="Script" path="res://src/examples/lobby-member.gd" id="1"]
+[ext_resource type="Theme" uid="uid://68ace3qam0yu" path="res://data/themes/button-theme.tres" id="2"]
+[ext_resource type="Texture2D" uid="uid://75y1l3r1ekie" path="res://data/images/default-avatar-medium.png" id="3"]
+[ext_resource type="FontFile" uid="uid://bpqf2n7qrpvq4" path="res://data/fonts/descriptions.tres" id="4"]
+
+[node name="LobbyMember" type="Control" node_paths=PackedStringArray("username_label", "avatar_rect", "button_kick")]
+custom_minimum_size = Vector2(256, 64)
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1")
+username_label = NodePath("Member/Stuff/Username")
+avatar_rect = NodePath("Member/Avatar")
+button_kick = NodePath("Member/Stuff/Controls/Kick")
+
+[node name="Member" type="HBoxContainer" parent="."]
+custom_minimum_size = Vector2(256, 0)
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+theme_override_constants/separation = 10
+
+[node name="Avatar" type="TextureRect" parent="Member"]
+layout_mode = 2
+texture = ExtResource("3")
+
+[node name="Stuff" type="VBoxContainer" parent="Member"]
+custom_minimum_size = Vector2(182, 0)
+layout_mode = 2
+
+[node name="Username" type="Label" parent="Member/Stuff"]
+custom_minimum_size = Vector2(0, 32)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("4")
+text = "Player Username"
+vertical_alignment = 1
+clip_text = true
+
+[node name="Controls" type="HBoxContainer" parent="Member/Stuff"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="Kick" type="Button" parent="Member/Stuff/Controls"]
+custom_minimum_size = Vector2(60, 0)
+layout_mode = 2
+theme = ExtResource("2")
+disabled = true
+text = "Kick"
+
+[node name="View" type="Button" parent="Member/Stuff/Controls"]
+custom_minimum_size = Vector2(60, 0)
+layout_mode = 2
+theme = ExtResource("2")
+text = "View"
+
+[connection signal="pressed" from="Member/Stuff/Controls/Kick" to="." method="_on_kick_pressed"]
+[connection signal="pressed" from="Member/Stuff/Controls/View" to="." method="_on_view_pressed"]
