@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=4 uid="uid://oy2i50fp5vb5"]
+[gd_scene load_steps=23 format=4 uid="uid://oy2i50fp5vb5"]
 
 [ext_resource type="Script" path="res://scripts_user/game_manager.gd" id="1_stkgf"]
 [ext_resource type="Shader" path="res://scripts_user/world_zero_test.gdshader" id="3_mo51q"]
@@ -6,6 +6,7 @@
 [ext_resource type="Script" path="res://scripts_user/debug/HUD_debug.gd" id="5_1by85"]
 [ext_resource type="Texture2D" uid="uid://drv585p0avj7g" path="res://assets/terrains/assets_world_map_rock Base Color23.png" id="5_mw48d"]
 [ext_resource type="FontFile" path="res://data/fonts/button-text.tres" id="5_t2w3x"]
+[ext_resource type="Script" path="res://scripts_user/nodes/vfx_node.gd" id="5_ydcpr"]
 [ext_resource type="FontFile" uid="uid://7m0mn6hjhjg" path="res://data/fonts/Roboto-Regular.ttf" id="6_a4lvg"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_m4xpp"]
@@ -175,6 +176,11 @@ environment = SubResource("Environment_tmhd4")
 transform = Transform3D(1, 0, 0, 0, 0.780005, 0.625773, 0, -0.625773, 0.780005, 0, 6.38463, 0)
 shadow_enabled = true
 
+[node name="Players" type="Node3D" parent="."]
+
+[node name="vfx_node" type="Node3D" parent="."]
+script = ExtResource("5_ydcpr")
+
 [node name="debug_hud" type="CanvasLayer" parent="."]
 visible = false
 
@@ -195,8 +201,6 @@ offset_top = 32.0
 offset_right = 55.0
 offset_bottom = 55.0
 text = "111111"
-
-[node name="Players" type="Node3D" parent="."]
 
 [node name="MultiplayerSpawner" type="MultiplayerSpawner" parent="."]
 _spawnable_scenes = PackedStringArray("res://planes/main_plane.tscn")

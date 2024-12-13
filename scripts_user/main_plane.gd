@@ -29,6 +29,7 @@ var turn_speed_y : float = 0.0
 
 @onready var mesh_instance = MeshInstance3D
 
+@onready var shotmarker: Marker3D = $vfx_node_texture/node_texture/shot
 
 	
 func _enter_tree() -> void:
@@ -76,6 +77,11 @@ func _physics_process(_delta: float) -> void:
 
 
 func forward_plane() -> void:
+	if Input.is_action_just_pressed("action"):
+		const VFX_EXPOSION = preload("res://vfx/vfx_exposion.tscn")
+		var _explosion := VFX_EXPOSION.instantiate()
+		GameplayGlobal.vfx_node.add_child(_explosion)
+		_explosion.global_position = shotmarker.global_position
 	direction = -node_texture.transform.basis.z
 	velocity = velocity.move_toward(direction * SPEED, ACCELERATION)
 		
