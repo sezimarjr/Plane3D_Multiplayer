@@ -6,7 +6,7 @@ extends CharacterBody3D
 @export var input_dir : Vector2 = Vector2.ZERO
 var mesh_color : Color
 
-const SPEED : float = 60.0 
+const SPEED : float = 40.0 
 
 const ACCELERATION : float = 3.0
 
@@ -25,7 +25,7 @@ var turn_speed_y : float = 0.0
 @onready var planeMesh: MeshInstance3D = $vfx_node_texture/node_texture/plane_mesh/Plane
 @onready var second_person: Marker3D = $vfx_node_texture/node_texture/cameras/second_person
 
-@onready var cam: Camera3D = $vfx_node_texture/node_texture/Camera3D
+@onready var cam: Camera3D = $vfx_node_texture/node_texture/cameras/Camera3D
 
 @onready var mesh_instance = MeshInstance3D
 
