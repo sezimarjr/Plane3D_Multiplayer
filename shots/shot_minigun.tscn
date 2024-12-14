@@ -1,0 +1,43 @@
+[gd_scene load_steps=5 format=3 uid="uid://bix6swt6k8a7t"]
+
+[ext_resource type="Script" path="res://scripts_user/shots/shot_minigun.gd" id="1_w3cwg"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_135ci"]
+size = Vector3(1.16, 1.62915, 6.88696)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hmr2k"]
+transparency = 1
+vertex_color_use_as_albedo = true
+albedo_color = Color(0.679402, 0.679402, 0, 1)
+emission_enabled = true
+emission = Color(1, 1, 0, 1)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_raibg"]
+material = SubResource("StandardMaterial3D_hmr2k")
+top_radius = 0.6
+bottom_radius = 0.0
+height = 5.0
+radial_segments = 4
+
+[node name="shot_minigun" type="CharacterBody3D"]
+collision_layer = 0
+collision_mask = 0
+script = ExtResource("1_w3cwg")
+
+[node name="collision" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_135ci")
+disabled = true
+
+[node name="mesh" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0)
+mesh = SubResource("CylinderMesh_raibg")
+
+[node name="hitbox" type="Area3D" parent="."]
+collision_layer = 0
+collision_mask = 3
+
+[node name="collision" type="CollisionShape3D" parent="hitbox"]
+shape = SubResource("BoxShape3D_135ci")
+disabled = true
+
+[connection signal="body_entered" from="hitbox" to="." method="_on_hitbox_body_entered"]
