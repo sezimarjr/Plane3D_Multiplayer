@@ -6,7 +6,7 @@ extends CharacterBody3D
 @export var input_dir : Vector2 = Vector2.ZERO
 var mesh_color : Color
 
-const SPEED : float = 40.0 
+const SPEED : float = 90.0 
 const ACCELERATION : float = 3.0
 var direction : Vector3 = Vector3.ZERO
 
