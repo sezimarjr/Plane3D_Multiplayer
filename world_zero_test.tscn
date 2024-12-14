@@ -48,7 +48,8 @@ subdivide_width = 2
 subdivide_depth = 1000
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_xsvrh"]
-sky_top_color = Color(2.11775e-06, 0.625421, 0.8849, 1)
+sky_top_color = Color(1.73271e-06, 0.446434, 0.627762, 1)
+sky_horizon_color = Color(0.437073, 0.692415, 1, 1)
 
 [sub_resource type="Sky" id="Sky_4anum"]
 sky_material = SubResource("ProceduralSkyMaterial_xsvrh")
@@ -66,6 +67,15 @@ glow_bloom = 0.02
 glow_blend_mode = 0
 glow_hdr_threshold = 1.17
 glow_hdr_scale = 1.48
+fog_enabled = true
+fog_mode = 1
+fog_light_color = Color(0.402012, 0.748316, 1, 1)
+fog_sun_scatter = 1.0
+fog_density = 1.0
+fog_aerial_perspective = 1.0
+fog_depth_curve = 0.225312
+fog_depth_begin = 100.0
+fog_depth_end = 4000.0
 
 [sub_resource type="Theme" id="Theme_dk0xm"]
 default_font = ExtResource("5_t2w3x")
@@ -117,8 +127,9 @@ skeleton = NodePath("../..")
 environment = SubResource("Environment_tmhd4")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.780005, 0.625773, 0, -0.625773, 0.780005, 0, 6.38463, 0)
+transform = Transform3D(1, 0, 0, 0, 0.173648, 0.984808, 0, -0.984808, 0.173648, 0, 0, 0)
 shadow_enabled = true
+shadow_transmittance_bias = 16.0
 sky_mode = 1
 
 [node name="Players" type="Node3D" parent="."]
